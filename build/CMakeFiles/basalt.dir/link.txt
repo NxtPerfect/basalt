@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbasalt.a CMakeFiles/basalt.dir/src/main.c.o
+/usr/bin/ranlib libbasalt.a

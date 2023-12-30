@@ -1,0 +1,10 @@
+- [ ] Capitalize first letter in string
+- [ ] Capitalize first letter in each word
+- [ ] Varied case
+- [ ] All uppercase
+- [ ] All lowercase
+- [ ] return true if UTF-8
+- [ ] check if alphanumeric
+- [ ] check if all numbers
+- [ ] check if only letters
+- [ ] check if only special characters

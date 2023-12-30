@@ -1,0 +1,3 @@
+/home/nxtperfect/Documents/Programming/C/basalt/build/CMakeFiles/basalt.dir
+/home/nxtperfect/Documents/Programming/C/basalt/build/CMakeFiles/edit_cache.dir
+/home/nxtperfect/Documents/Programming/C/basalt/build/CMakeFiles/rebuild_cache.dir
