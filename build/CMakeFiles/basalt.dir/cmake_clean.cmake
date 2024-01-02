@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/basalt.dir/src/main.c.o"
   "CMakeFiles/basalt.dir/src/main.c.o.d"
-  "libbasalt.a"
-  "libbasalt.pdb"
+  "CMakeFiles/basalt.dir/src/utility.c.o"
+  "CMakeFiles/basalt.dir/src/utility.c.o.d"
+  "basalt"
+  "basalt.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

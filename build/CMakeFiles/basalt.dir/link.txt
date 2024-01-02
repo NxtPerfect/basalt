@@ -1,2 +1,1 @@
-/usr/bin/ar qc libbasalt.a CMakeFiles/basalt.dir/src/main.c.o
-/usr/bin/ranlib libbasalt.a
+/usr/bin/cc CMakeFiles/basalt.dir/src/main.c.o CMakeFiles/basalt.dir/src/utility.c.o -o basalt 

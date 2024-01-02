@@ -153,6 +153,30 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/basalt.dir/build.make CMakeFiles/basalt.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/utility.o: src/utility.c.o
+.PHONY : src/utility.o
+
+# target to build an object file
+src/utility.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/basalt.dir/build.make CMakeFiles/basalt.dir/src/utility.c.o
+.PHONY : src/utility.c.o
+
+src/utility.i: src/utility.c.i
+.PHONY : src/utility.i
+
+# target to preprocess a source file
+src/utility.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/basalt.dir/build.make CMakeFiles/basalt.dir/src/utility.c.i
+.PHONY : src/utility.c.i
+
+src/utility.s: src/utility.c.s
+.PHONY : src/utility.s
+
+# target to generate assembly for a file
+src/utility.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/basalt.dir/build.make CMakeFiles/basalt.dir/src/utility.c.s
+.PHONY : src/utility.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +189,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/utility.o"
+	@echo "... src/utility.i"
+	@echo "... src/utility.s"
 .PHONY : help
 
 

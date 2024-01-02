@@ -4,5 +4,5 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 project(basalt VERSION 0.1)
 file(GLOB_RECURSE SRC_FILES src/*.c)
-add_library(basalt ${SRC_FILES})
+add_executable(basalt ${SRC_FILES})
 target_include_directories(basalt PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
