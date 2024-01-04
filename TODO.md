@@ -1,4 +1,4 @@
-- [ ] Capitalize first letter in string
+- [x] Capitalize first letter in string
 - [ ] Capitalize first letter in each word
 - [ ] Varied case
 - [ ] All uppercase

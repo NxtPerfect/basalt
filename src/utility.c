@@ -70,7 +70,7 @@ char *copyStr(const char *original, char *copyTo) {
 // Returns slice of string from given index
 char *strSliceBeginningAt(const char *str, const int start) {
   int len = getSizeOfString(str);
-  char *s;
+  char *s = malloc(len - start);
   if (len == 0) {
     return s;
   }
@@ -84,13 +84,32 @@ char *strSliceBeginningAt(const char *str, const int start) {
     return strAppendChar(&str[start], str[start + 1]);
   }
   for (int i = start; i < len; i++) {
-    s = strAppendChar(s, str[i]);
+    s[i - start] = str[i];
   }
   return s;
 }
 
 // Returns slice of string ending at given index
-char *strSliceEndingAt(const char *str, const int end) { return "WIP"; }
+char *strSliceEndingAt(const char *str, const int end) {
+  int len = getSizeOfString(str);
+  char *s = malloc(len - end);
+  if (len == 0) {
+    return s;
+  }
+  if (end >= len) {
+    return s;
+  }
+  if (end + 1 == len) {
+    return &str[end];
+  }
+  if (end + 2 == len) {
+    return strAppendChar(&str[end], str[end + 1]);
+  }
+  for (int i = 0; i < end; i++) {
+    s[i] = str[i];
+  }
+  return s;
+}
 
 /* Capitalizes first letter in a string, if it's ASCII
  * and if it's not already capitalized
@@ -105,15 +124,10 @@ char *capitalizeFirstLetterASCII(char *str) {
   if (res == NULL) {
     return NULL;
   }
-  printf("%s\n", str);
   res = copyStr(str, res);
-  printf("%c\n", res[0]);
   for (int i = 0; str[i] != '\0'; i++) {
     if ((str[i] >= 'a') && (str[i] <= 'z')) {
-      // this line segfaults
       res[i] = res[i] - ('a' - 'A');
-      printf("%s\n", res);
-      // strSliceBeginningAt(str, i)
       break;
     }
   }
