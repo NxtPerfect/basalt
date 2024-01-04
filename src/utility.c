@@ -1,40 +1,74 @@
 #include "../include/utility.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-// Gets size of string
-int getSizeOfString(char *str) { return (int)(sizeof(str) / sizeof(char)); }
+// Gets size of string as int
+int getSizeOfString(const char *str) {
+  int len = 0;
+  for (int i = 0; str[i] != '\0'; i++) {
+    len++;
+  }
+  return len;
+}
 
 // Appends character to the end of string
-char *strAppendChar(char *appendTo, char c) {
+char *strAppendChar(const char *appendTo, const char c) {
   int len = getSizeOfString(appendTo);
+  char *res;
+  // If string is empty, return char
   if (len == 0) {
-    return &c;
+    res = malloc(2 * sizeof(char));
+    if (res == NULL) {
+      return NULL; // If malloc fails
+    }
+    res[0] = c;
+    res[1] = '\0';
+    return res;
   }
-  char *s = appendTo;
-  s[len] = c;
-  s[len + 1] = '\0';
-  return s;
+  // Allocate space for string + char
+  res = malloc((len + 2) * sizeof(char));
+  if (res == NULL) {
+    return NULL;
+  } // If malloc fails
+  for (int i = 0; i < len; i++) {
+    res[i] = appendTo[i];
+  }
+  res[len] = c;
+  res[len + 1] = '\0';
+  return res;
 }
 
 // Appends one string to another
 char *strAppendStr(char *appendTo, char *appendFrom) {
   int lenAppendTo = getSizeOfString(appendTo);
   int lenAppendFrom = getSizeOfString(appendFrom);
+  char *res;
   if (lenAppendTo == 0) {
     return appendFrom;
   }
   if (lenAppendFrom == 0) {
     return appendTo;
   }
-  char *s = appendTo;
+  char *s = malloc(lenAppendTo + lenAppendFrom + 1);
   for (int i = lenAppendTo; i < (lenAppendTo + lenAppendFrom); i++) {
     s[i] = appendFrom[i];
   }
+  s[lenAppendTo + lenAppendFrom + 1] = '\0';
   return s;
 }
 
+// Copies string contains from original to copyTo
+char *copyStr(const char *original, char *copyTo) {
+  int lenOriginal = getSizeOfString(original);
+  copyTo = malloc(lenOriginal);
+  for (int i = 0; original[i] != '\0'; i++) {
+    copyTo[i] = original[i];
+  }
+  return copyTo;
+}
+
 // Returns slice of string from given index
-char *strSliceBeginningAt(char *str, int start) {
+char *strSliceBeginningAt(const char *str, const int start) {
   int len = getSizeOfString(str);
   char *s;
   if (len == 0) {
@@ -56,16 +90,31 @@ char *strSliceBeginningAt(char *str, int start) {
 }
 
 // Returns slice of string ending at given index
-char *strSliceEndingAt(char *str, int end) { return "WIP"; }
+char *strSliceEndingAt(const char *str, const int end) { return "WIP"; }
 
-// Seg faults
+/* Capitalizes first letter in a string, if it's ASCII
+ * and if it's not already capitalized
+ * else returns empty string
+ * It goes through string until it finds letter
+ * when it does, it capitalizes it and returns
+ */
 char *capitalizeFirstLetterASCII(char *str) {
-  size_t length = sizeof(str) / sizeof(char);
-  char *res = "";
-  for (int i = 0; i < length; i++) {
-    if (96 < (int)str[i] < 123) { // One of these has to seg fault
-      char *temp = strAppendChar(res, (char)((int)(str[i]) - 32));
-      strAppendStr(temp, strSliceBeginningAt(str, i));
+  int lenStr = getSizeOfString(str);
+  char *res = malloc(lenStr);
+  // If malloc fails
+  if (res == NULL) {
+    return NULL;
+  }
+  printf("%s\n", str);
+  res = copyStr(str, res);
+  printf("%c\n", res[0]);
+  for (int i = 0; str[i] != '\0'; i++) {
+    if ((str[i] >= 'a') && (str[i] <= 'z')) {
+      // this line segfaults
+      res[i] = res[i] - ('a' - 'A');
+      printf("%s\n", res);
+      // strSliceBeginningAt(str, i)
+      break;
     }
   }
   return res;

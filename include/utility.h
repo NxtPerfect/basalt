@@ -1,8 +1,9 @@
 #pragma once
 
-char *capitalizeFirstLetterASCII(char *str);
-char *strSliceBeginningAt(char *str, int start);
-char *strSliceEndingAt(char *str, int end);
+int getSizeOfString(const char *str);
+char *strAppendChar(const char *appendTo, const char c);
 char *strAppendStr(char *appendTo, char *appendFrom);
-char *strAppendChar(char *appendTo, char c);
-int getSizeOfString(char *str);
+char *copyStr(const char *original, char *copyTo);
+char *strSliceBeginningAt(const char *str, const int start);
+char *strSliceEndingAt(const char *str, const int end);
+char *capitalizeFirstLetterASCII(char *str);
