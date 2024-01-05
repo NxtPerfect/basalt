@@ -12,7 +12,7 @@ int getSizeOfString(const char *str) {
 }
 
 // Appends character to the end of string
-char *strAppendChar(const char *appendTo, const char c) {
+char *appendChar(const char *appendTo, const char c) {
   int len = getSizeOfString(appendTo);
   char *res;
   // If string is empty, return char
@@ -39,7 +39,7 @@ char *strAppendChar(const char *appendTo, const char c) {
 }
 
 // Appends one string to another
-char *strAppendStr(char *appendTo, char *appendFrom) {
+char *appendStr(char *appendTo, char *appendFrom) {
   int lenAppendTo = getSizeOfString(appendTo);
   int lenAppendFrom = getSizeOfString(appendFrom);
   char *res;
@@ -68,7 +68,7 @@ char *copyStr(const char *original, char *copyTo) {
 }
 
 // Returns slice of string from given index
-char *strSliceBeginningAt(const char *str, const int start) {
+char *sliceBeginningAt(const char *str, const int start) {
   int len = getSizeOfString(str);
   char *s = malloc(len - start);
   if (len == 0) {
@@ -90,7 +90,7 @@ char *strSliceBeginningAt(const char *str, const int start) {
 }
 
 // Returns slice of string ending at given index
-char *strSliceEndingAt(const char *str, const int end) {
+char *sliceEndingAt(const char *str, const int end) {
   int len = getSizeOfString(str);
   char *s = malloc(len - end);
   if (len == 0) {
