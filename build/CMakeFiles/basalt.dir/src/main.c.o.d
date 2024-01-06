@@ -2,6 +2,7 @@ CMakeFiles/basalt.dir/src/main.c.o: \
  /home/nxtperfect/Documents/Programming/C/basalt/src/main.c \
  /usr/include/stdc-predef.h \
  /home/nxtperfect/Documents/Programming/C/basalt/src/../include/utility.h \
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h \
  /usr/include/stdio.h /usr/include/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/bits/wordsize.h /usr/include/bits/timesize.h \

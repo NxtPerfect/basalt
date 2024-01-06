@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/basalt.dir/src/benchmark.c.o"
+  "CMakeFiles/basalt.dir/src/benchmark.c.o.d"
   "CMakeFiles/basalt.dir/src/main.c.o"
   "CMakeFiles/basalt.dir/src/main.c.o.d"
   "CMakeFiles/basalt.dir/src/utility.c.o"

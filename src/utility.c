@@ -12,7 +12,7 @@ int getSizeOfString(const char *str) {
 }
 
 // Appends character to the end of string
-char *strAppendChar(const char *appendTo, const char c) {
+char *appendChar(const char *appendTo, const char c) {
   int len = getSizeOfString(appendTo);
   char *res;
   // If string is empty, return char
@@ -39,7 +39,7 @@ char *strAppendChar(const char *appendTo, const char c) {
 }
 
 // Appends one string to another
-char *strAppendStr(char *appendTo, char *appendFrom) {
+char *appendStr(char *appendTo, char *appendFrom) {
   int lenAppendTo = getSizeOfString(appendTo);
   int lenAppendFrom = getSizeOfString(appendFrom);
   char *res;
@@ -68,9 +68,9 @@ char *copyStr(const char *original, char *copyTo) {
 }
 
 // Returns slice of string from given index
-char *strSliceBeginningAt(const char *str, const int start) {
+char *sliceBeginningAt(const char *str, const int start) {
   int len = getSizeOfString(str);
-  char *s;
+  char *s = malloc(len - start);
   if (len == 0) {
     return s;
   }
@@ -81,16 +81,35 @@ char *strSliceBeginningAt(const char *str, const int start) {
     return &str[start];
   }
   if (start + 2 == len) {
-    return strAppendChar(&str[start], str[start + 1]);
+    return appendChar(&str[start], str[start + 1]);
   }
   for (int i = start; i < len; i++) {
-    s = strAppendChar(s, str[i]);
+    s[i - start] = str[i];
   }
   return s;
 }
 
 // Returns slice of string ending at given index
-char *strSliceEndingAt(const char *str, const int end) { return "WIP"; }
+char *sliceEndingAt(const char *str, const int end) {
+  int len = getSizeOfString(str);
+  char *s = malloc(len - end);
+  if (len == 0) {
+    return s;
+  }
+  if (end >= len) {
+    return s;
+  }
+  if (end + 1 == len) {
+    return &str[end];
+  }
+  if (end + 2 == len) {
+    return appendChar(&str[end], str[end + 1]);
+  }
+  for (int i = 0; i < end; i++) {
+    s[i] = str[i];
+  }
+  return s;
+}
 
 /* Capitalizes first letter in a string, if it's ASCII
  * and if it's not already capitalized
@@ -105,17 +124,68 @@ char *capitalizeFirstLetterASCII(char *str) {
   if (res == NULL) {
     return NULL;
   }
-  printf("%s\n", str);
   res = copyStr(str, res);
-  printf("%c\n", res[0]);
   for (int i = 0; str[i] != '\0'; i++) {
     if ((str[i] >= 'a') && (str[i] <= 'z')) {
-      // this line segfaults
       res[i] = res[i] - ('a' - 'A');
-      printf("%s\n", res);
-      // strSliceBeginningAt(str, i)
       break;
     }
   }
   return res;
+}
+
+/* Counts how many times char occurs in string
+ * return 0 if none found, else returns int
+ * time complexity O(n)
+ */
+int countChar(const char *str, const char c) {
+  int howMany = 0;
+  for (int i = 0; str[i] != '\0'; i++) {
+    if (str[i] != c) {
+      continue;
+    }
+    howMany++;
+  }
+  return howMany;
+}
+
+/* Returns list of all unique characters in string
+ * time complexity O(n^2)
+ */
+char *uniqueChars(const char *str) {
+  int index = 0;
+  char *characters = malloc(getSizeOfString(str));
+  // If str[i] is in characters[j] then it's in there, continue
+  // else we add it to index, as that's our last element
+  for (int i = 0; str[i] != '\0'; i++) {
+    bool inArr = false;
+    for (int j = 0; j < index; j++) {
+      if (str[i] == characters[j]) {
+        inArr = true;
+        break;
+      }
+    }
+    if (!inArr) {
+      characters[index] = str[i];
+      index++;
+    }
+  }
+  return characters;
+}
+
+char *strip(char *str) {
+  int index = 0;
+  char *res = malloc(getSizeOfString(str));
+  for (int i = 0; str[i] != '\0'; i++) {
+    if (str[i] != ' ' && str[i] != '\n') {
+      res[index] = str[i];
+      index++;
+    }
+  }
+  return res;
+}
+char *join(char *str, char *secondStr, char seperator) {
+  char *res = malloc(getSizeOfString(str) + getSizeOfString(secondStr) +
+                     (sizeof(char) * 2));
+  return str;
 }

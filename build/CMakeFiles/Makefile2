@@ -81,12 +81,12 @@ clean: CMakeFiles/basalt.dir/clean
 CMakeFiles/basalt.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/basalt.dir/build.make CMakeFiles/basalt.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/basalt.dir/build.make CMakeFiles/basalt.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nxtperfect/Documents/Programming/C/basalt/build/CMakeFiles --progress-num=1,2,3 "Built target basalt"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nxtperfect/Documents/Programming/C/basalt/build/CMakeFiles --progress-num=1,2,3,4 "Built target basalt"
 .PHONY : CMakeFiles/basalt.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/basalt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nxtperfect/Documents/Programming/C/basalt/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nxtperfect/Documents/Programming/C/basalt/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/basalt.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nxtperfect/Documents/Programming/C/basalt/build/CMakeFiles 0
 .PHONY : CMakeFiles/basalt.dir/rule
