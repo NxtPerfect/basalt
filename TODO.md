@@ -1,4 +1,6 @@
-- [ ] Capitalize first letter in string
+[Cmocka](https://cmocka.org/) for unit testing, installed with dnf
+
+- [x] Capitalize first letter in string
 - [ ] Capitalize first letter in each word
 - [ ] Varied case
 - [ ] All uppercase
@@ -10,3 +12,4 @@
 - [ ] check if only special characters
 - [ ] string 1 contains string 2 -> get first element from 2nd, check if it's in 1st
 then move to the length of 2nd if it's same char then most likely contains
+- [ ] Ensure code safety

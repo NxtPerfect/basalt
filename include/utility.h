@@ -19,3 +19,4 @@ bool isOnlyNumbers(char *str);
 bool isOnlyLetters(char *str);
 bool isOnlySpecialCharacters(char *str);
 bool containsStr(char *str, char *toContain);
+bool equals(char *strL, char *strR);

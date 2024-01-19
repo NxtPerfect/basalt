@@ -155,6 +155,9 @@ int countChar(const char *str, const char c) {
 char *uniqueChars(const char *str) {
   int index = 0;
   char *characters = malloc(getSizeOfString(str));
+  if (characters == NULL) {
+    return NULL;
+  }
   // If str[i] is in characters[j] then it's in there, continue
   // else we add it to index, as that's our last element
   for (int i = 0; str[i] != '\0'; i++) {
@@ -176,6 +179,9 @@ char *uniqueChars(const char *str) {
 char *strip(char *str) {
   int index = 0;
   char *res = malloc(getSizeOfString(str));
+  if (res == NULL) {
+    return NULL;
+  }
   for (int i = 0; str[i] != '\0'; i++) {
     if (str[i] != ' ' && str[i] != '\n') {
       res[index] = str[i];
@@ -184,8 +190,36 @@ char *strip(char *str) {
   }
   return res;
 }
+
 char *join(char *str, char *secondStr, char seperator) {
   char *res = malloc(getSizeOfString(str) + getSizeOfString(secondStr) +
                      (sizeof(char) * 2));
+  if (res == NULL) {
+    return NULL;
+  }
   return str;
+}
+
+char *toUpper(char *str) {
+  int len = getSizeOfString(str);
+  char *res = malloc(len);
+  int diff = 'a' - 'A';
+  for (int i = 0; i < len; i++){
+    if (str[i] > 'z' || str[i] < 'a') {
+      res[i] = str[i];
+      continue;
+    }
+    res[i] = str[i] - diff;
+  }
+  return res;
+}
+
+bool equals(char *strL, char *strR) {
+  int lenL = getSizeOfString(strL);
+  int lenR = getSizeOfString(strR);
+  if (lenL != lenR) return false;
+  for (int i = 0; i < lenL; i++) {
+    if (strL[i] != strR[i]) return false;
+  }
+  return true;
 }

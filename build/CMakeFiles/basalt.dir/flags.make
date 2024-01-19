@@ -6,5 +6,5 @@ C_DEFINES =
 
 C_INCLUDES = -I/home/nxtperfect/Documents/Programming/C/basalt/include
 
-C_FLAGS = -std=gnu17
+C_FLAGS = -g -std=gnu17
 
