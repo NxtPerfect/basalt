@@ -1,4 +1,4 @@
-[Cmocka](https://cmocka.org/) for unit testing, installed with dnf
+[Munit](https://nemequ.github.io/munit/#getting-started) for unit testing, installed with dnf
 
 - [x] Capitalize first letter in string
 - [ ] Capitalize first letter in each word

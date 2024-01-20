@@ -5,7 +5,7 @@
 // Gets size of string as int
 int getSizeOfString(const char *str) {
   int len = 0;
-  for (int i = 0; str[i] != '\0'; i++) {
+  while (str[len] != '\0') {
     len++;
   }
   return len;
@@ -13,8 +13,18 @@ int getSizeOfString(const char *str) {
 
 // Appends character to the end of string
 char *appendChar(const char *appendTo, const char c) {
+  if (appendTo == NULL) {
+    char *res = NULL;
+    res = malloc(2 * sizeof(char));
+    if (res == NULL) {
+      return NULL; // If malloc fails
+    }
+    res[0] = c;
+    res[1] = '\0';
+    return res;
+  }
   int len = getSizeOfString(appendTo);
-  char *res;
+  char *res = NULL;
   // If string is empty, return char
   if (len == 0) {
     res = malloc(2 * sizeof(char));
@@ -42,7 +52,7 @@ char *appendChar(const char *appendTo, const char c) {
 char *appendStr(char *appendTo, char *appendFrom) {
   int lenAppendTo = getSizeOfString(appendTo);
   int lenAppendFrom = getSizeOfString(appendFrom);
-  char *res;
+  char *res = NULL;
   if (lenAppendTo == 0) {
     return appendFrom;
   }
@@ -139,6 +149,8 @@ char *capitalizeFirstLetterASCII(char *str) {
  * time complexity O(n)
  */
 int countChar(const char *str, const char c) {
+  if (str == NULL)
+    return 0;
   int howMany = 0;
   for (int i = 0; str[i] != '\0'; i++) {
     if (str[i] != c) {
@@ -154,6 +166,9 @@ int countChar(const char *str, const char c) {
  */
 char *uniqueChars(const char *str) {
   int index = 0;
+  if (str == NULL) {
+    return NULL;
+  }
   char *characters = malloc(getSizeOfString(str));
   if (characters == NULL) {
     return NULL;
@@ -177,6 +192,8 @@ char *uniqueChars(const char *str) {
 }
 
 char *strip(char *str) {
+  if (str == NULL)
+    return NULL;
   int index = 0;
   char *res = malloc(getSizeOfString(str));
   if (res == NULL) {
@@ -191,7 +208,20 @@ char *strip(char *str) {
   return res;
 }
 
+// TODO: Needs implementation
 char *join(char *str, char *secondStr, char seperator) {
+  if (str == NULL && secondStr == NULL)
+    return NULL;
+  // if (seperator == NULL) // TODO Hm what to do if seperator is NULL?
+  if (str == NULL) {
+    int l = getSizeOfString(secondStr);
+    char *res = malloc(l + sizeof(char) * 2);
+    res[0] = seperator;
+    for (int i = 1; i < l; i++) {
+      res[i] = secondStr[i];
+    }
+    res[l] = '\0';
+  }
   char *res = malloc(getSizeOfString(str) + getSizeOfString(secondStr) +
                      (sizeof(char) * 2));
   if (res == NULL) {
@@ -204,7 +234,7 @@ char *toUpper(char *str) {
   int len = getSizeOfString(str);
   char *res = malloc(len);
   int diff = 'a' - 'A';
-  for (int i = 0; i < len; i++){
+  for (int i = 0; i < len; i++) {
     if (str[i] > 'z' || str[i] < 'a') {
       res[i] = str[i];
       continue;
@@ -214,12 +244,34 @@ char *toUpper(char *str) {
   return res;
 }
 
+char *toLower(char *str) {
+  int len = getSizeOfString(str);
+  char *res = malloc(len);
+  int diff = 'a' - 'A';
+  for (int i = 0; i < len; i++) {
+    if (str[i] > 'Z' || str[i] < 'A') {
+      res[i] = str[i];
+      continue;
+    }
+    res[i] = str[i] + diff;
+  }
+  return res;
+}
+
 bool equals(char *strL, char *strR) {
+  if (strL == NULL && strR == NULL) {
+    return true;
+  }
+  if (strL == NULL || strR == NULL) {
+    return false;
+  }
   int lenL = getSizeOfString(strL);
   int lenR = getSizeOfString(strR);
-  if (lenL != lenR) return false;
+  if (lenL != lenR)
+    return false;
   for (int i = 0; i < lenL; i++) {
-    if (strL[i] != strR[i]) return false;
+    if (strL[i] != strR[i])
+      return false;
   }
   return true;
 }
