@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/nxtperfect/Documents/Programming/C/basalt/include
+C_INCLUDES = 
 
 C_FLAGS = -g -std=gnu17
 

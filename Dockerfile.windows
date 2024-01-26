@@ -1,0 +1,12 @@
+FROM mcr.microsoft.com/windows/servercore
+WORKDIR /app
+COPY CMakeLists.txt /app/
+COPY include /app/include
+COPY src /app/src
+# TODO
+# RUN mkdir -p /app/build && chmod -R 777 /app/build
+WORKDIR /app/build
+RUN cmake /app && make
+WORKDIR /app
+# TODO
+# CMD ['./make_debug.sh']

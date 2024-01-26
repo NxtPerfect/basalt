@@ -1,5 +1,5 @@
 #include "../include/utility.h"
-#include "../munit/munit.h"
+// #include "../munit/munit.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -55,6 +55,18 @@ void test_join_simple(char *strL, char *strR, char sep) {
   assert(equals(join(strL, strR, sep), "help pls&pls work bby"));
 }
 
+void test_join_empty_left(char *strL, char *strR, char sep) {
+  assert(equals(join(strL, strR, sep), "&pls work bby"));
+}
+
+void test_join_empty_right(char *strL, char *strR, char sep) {
+  assert(equals(join(strL, strR, sep), "help pls&"));
+}
+
+void test_join_empty_seperator(char *strL, char *strR) {
+  // assert(equals(join(strL, strR, NULL), "help plspls work bby"));
+}
+
 int main(int argc, char *argv[]) {
   printf("Starting tests...\n");
 
@@ -78,8 +90,12 @@ int main(int argc, char *argv[]) {
 
   printf("Testing join...\n");
   test_join_simple(testString, testString2, '&');
+  test_join_empty_left(NULL, testString2, '&');
+  test_join_empty_right(testString2, NULL, '&');
   // TODO
   printf("Testing toUpper...\n");
+  // TODO
+  printf("Testing toLower...\n");
   // TODO
   printf("Finished testing with success!\n");
   return 0;

@@ -5,6 +5,9 @@
 // Gets size of string as int
 int getSizeOfString(const char *str) {
   int len = 0;
+  if (str == NULL) {
+    return len;
+  }
   while (str[len] != '\0') {
     len++;
   }
@@ -208,26 +211,65 @@ char *strip(char *str) {
   return res;
 }
 
-// TODO: Needs implementation
+// TODO:
+// When secondStr is empty, we get segfault
+// add another condition, if secondStr length == 0
+// then only add that part
+// Next maybe try to unify
+// both left or right empty
+// into one if statement
 char *join(char *str, char *secondStr, char seperator) {
-  if (str == NULL && secondStr == NULL)
+  int ll = getSizeOfString(str);
+  int lr = getSizeOfString(secondStr);
+  if (ll == 0 && lr == 0)
     return NULL;
-  // if (seperator == NULL) // TODO Hm what to do if seperator is NULL?
-  if (str == NULL) {
-    int l = getSizeOfString(secondStr);
-    char *res = malloc(l + sizeof(char) * 2);
-    res[0] = seperator;
-    for (int i = 1; i < l; i++) {
-      res[i] = secondStr[i];
-    }
-    res[l] = '\0';
+
+  int seperator_size = 0;
+  if (seperator != NULL) {
+    seperator_size = 1;
   }
-  char *res = malloc(getSizeOfString(str) + getSizeOfString(secondStr) +
-                     (sizeof(char) * 2));
+
+  if (ll == 0) {
+    char *res = malloc(lr + 2 + seperator_size);
+    if (res == NULL) {
+      return NULL;
+    }
+    int init = 0;
+    if (seperator_size != 0) {
+      res[0] = seperator;
+      init = 1;
+    }
+    for (int i = init; i < (lr + init); i++) {
+      res[i] = secondStr[i - init];
+      printf("%s\n", res);
+    }
+    res[lr + 1] = '\0';
+    return res;
+  }
+
+  char *res = malloc(ll + lr + 2 + seperator_size);
+
   if (res == NULL) {
     return NULL;
   }
-  return str;
+
+  int length = ll + lr + seperator_size;
+  for (int i = 0; i <= length; i++) {
+    if (i < ll) {
+      res[i] = str[i];
+      continue;
+    }
+    if (i == ll) {
+      res[i] = seperator;
+      continue;
+    }
+    if (i > ll) {
+      res[i] = secondStr[i - ll - seperator_size];
+      continue;
+    }
+  }
+  res[length] = '\0';
+  return res;
 }
 
 char *toUpper(char *str) {
@@ -256,6 +298,27 @@ char *toLower(char *str) {
     res[i] = str[i] + diff;
   }
   return res;
+}
+
+bool isAlphanumeric(char *str) {
+  // maybe checking if it's in 3 ranges
+  // can be faster
+  // as it's only 3 ifs
+  // OK: 48-57 - 0 - 9
+  // OK: 65-90 - A - Z
+  // OK: 97-122 - a - z
+  int len = getSizeOfString(str);
+  for (int i = 0; i < len; i++) {
+    if (str[i] < '0')
+      return false;
+    if (str[i] > 'z')
+      return false;
+    if (str[i] > '9' && str[i] < 'A')
+      return false;
+    if (str[i] > 'Z' && str[i] < 'a')
+      return false;
+  }
+  return true;
 }
 
 bool equals(char *strL, char *strR) {
