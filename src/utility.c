@@ -226,24 +226,41 @@ char *join(char *str, char *secondStr, char seperator) {
 
   int seperator_size = 0;
   if (seperator != NULL) {
-    seperator_size = 1;
+    seperator_size = sizeof(char);
   }
 
   if (ll == 0) {
-    char *res = malloc(lr + 2 + seperator_size);
+    if (seperator_size == 0) {
+      return secondStr;
+    }
+    char *res = malloc(seperator_size + lr + sizeof('\0'));
     if (res == NULL) {
       return NULL;
     }
-    int init = 0;
-    if (seperator_size != 0) {
-      res[0] = seperator;
-      init = 1;
-    }
-    for (int i = init; i < (lr + init); i++) {
-      res[i] = secondStr[i - init];
-      printf("%s\n", res);
+    // Prepend seperator at start of string
+    res[0] = seperator;
+    for (int i = 1; i <= lr; i++) {
+      res[i] = secondStr[i - 1];
     }
     res[lr + 1] = '\0';
+    return res;
+  }
+
+  if (lr == 0) {
+    printf("%d", lr);
+    if (seperator_size == 0) {
+      return str;
+    }
+    char *res = malloc(ll + seperator_size + sizeof('\0'));
+    if (res == NULL) {
+      return NULL;
+    }
+    for (int i = 0; i <= ll; i++) {
+      res[i] = str[i];
+      printf("%s \t\t|| iter %d", res, i);
+    }
+    res[ll + 1] = seperator;
+    res[ll + 2] = '\0';
     return res;
   }
 

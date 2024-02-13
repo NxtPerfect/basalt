@@ -64,7 +64,7 @@ void test_join_empty_right(char *strL, char *strR, char sep) {
 }
 
 void test_join_empty_seperator(char *strL, char *strR) {
-  // assert(equals(join(strL, strR, NULL), "help plspls work bby"));
+  assert(equals(join(strL, strR, NULL), "help plspls work bby"));
 }
 
 int main(int argc, char *argv[]) {
@@ -91,7 +91,8 @@ int main(int argc, char *argv[]) {
   printf("Testing join...\n");
   test_join_simple(testString, testString2, '&');
   test_join_empty_left(NULL, testString2, '&');
-  test_join_empty_right(testString2, NULL, '&');
+  test_join_empty_right(testString, NULL, '&');
+  test_join_empty_seperator(testString, testString2);
   // TODO
   printf("Testing toUpper...\n");
   // TODO

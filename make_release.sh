@@ -1,1 +1,5 @@
-cd build && cmake ../ && make && ./basalt
+#!/bin/bash
+cd build || exit
+cmake ../
+make
+./basalt

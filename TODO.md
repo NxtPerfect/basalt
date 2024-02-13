@@ -13,6 +13,10 @@ Learn how to use CTest inside CMake
     - [ ] ^UTF-8
 - [ ] Capitalize first letter in each word
     - [ ] ^UTF-8
+- [/] join
+    - [x] crashes if no seperator
+    - [x] seg faults if left empty
+    - [ ] seg faults if right empty
 - [ ] Varied case
 - [ ] All uppercase
 - [ ] All lowercase
