@@ -225,7 +225,7 @@ char *join(char *str, char *secondStr, char seperator) {
     return NULL;
 
   int seperator_size = 0;
-  if (seperator != NULL) {
+  if (seperator != NULL && seperator != "") {
     seperator_size = sizeof(char);
   }
 
@@ -247,7 +247,6 @@ char *join(char *str, char *secondStr, char seperator) {
   }
 
   if (lr == 0) {
-    printf("%d", lr);
     if (seperator_size == 0) {
       return str;
     }
@@ -255,12 +254,11 @@ char *join(char *str, char *secondStr, char seperator) {
     if (res == NULL) {
       return NULL;
     }
-    for (int i = 0; i <= ll; i++) {
+    for (int i = 0; i < ll; i++) {
       res[i] = str[i];
-      printf("%s \t\t|| iter %d", res, i);
     }
-    res[ll + 1] = seperator;
-    res[ll + 2] = '\0';
+    res[ll] = seperator;
+    res[ll + 1] = '\0';
     return res;
   }
 
@@ -271,17 +269,22 @@ char *join(char *str, char *secondStr, char seperator) {
   }
 
   int length = ll + lr + seperator_size;
+  bool skip = false;
   for (int i = 0; i <= length; i++) {
     if (i < ll) {
       res[i] = str[i];
       continue;
     }
-    if (i == ll) {
+    if (i == ll && seperator_size) {
       res[i] = seperator;
       continue;
     }
     if (i > ll) {
-      res[i] = secondStr[i - ll - seperator_size];
+      if (!seperator_size) {
+        res[i-1] = secondStr[i - ll - 1];
+        continue;
+      }
+      res[i] = secondStr[i - ll - 1];
       continue;
     }
   }

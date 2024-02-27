@@ -4,6 +4,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void test_get_size_simple(char *str) {
+  assert(getSizeOfString(str) == 6);
+}
+
+void test_get_size_empty_str() {
+  char *str = "";
+  assert(getSizeOfString(str) == 0);
+}
+
 void test_append_char_simple(char *str) {
   assert(equals(appendChar(str, 'B'), "help plsB"));
 }
@@ -55,12 +64,12 @@ void test_join_simple(char *strL, char *strR, char sep) {
   assert(equals(join(strL, strR, sep), "help pls&pls work bby"));
 }
 
-void test_join_empty_left(char *strL, char *strR, char sep) {
-  assert(equals(join(strL, strR, sep), "&pls work bby"));
+void test_join_empty_left(char *strR, char sep) {
+  assert(equals(join(NULL, strR, sep), "&pls work bby"));
 }
 
-void test_join_empty_right(char *strL, char *strR, char sep) {
-  assert(equals(join(strL, strR, sep), "help pls&"));
+void test_join_empty_right(char *strL, char sep) {
+  assert(equals(join(strL, NULL, sep), "help pls&"));
 }
 
 void test_join_empty_seperator(char *strL, char *strR) {
@@ -70,29 +79,40 @@ void test_join_empty_seperator(char *strL, char *strR) {
 int main(int argc, char *argv[]) {
   printf("Starting tests...\n");
 
+  printf("Testing getSizeOfString...\t");
+  test_get_size_simple("Biggus");
+  test_get_size_empty_str();
+  printf("Passed\n");
+
   char *testString = "help pls";
-  printf("Testing appendChar...\n");
+  printf("Testing appendChar...\t");
   test_append_char_simple(testString);
   test_append_char_empty_str();
+  printf("Passed\n");
 
   char *testString2 = "pls work bby";
-  printf("Testing uniqueChars...\n");
+  printf("Testing uniqueChars...\t");
   test_unique_chars_simple(testString2);
   test_unique_chars_empty();
+  printf("Passed\n");
 
-  printf("Testing countChar...\n");
+  printf("Testing countChar...\t");
   test_count_char_simple(testString);
   test_count_char_empty();
+  printf("Passed\n");
 
-  printf("Testing strip...\n");
+  printf("Testing strip...\t");
   test_strip_simple(testString2);
   test_strip_empty();
+  printf("Passed\n");
 
-  printf("Testing join...\n");
+  printf("Testing join...\t");
   test_join_simple(testString, testString2, '&');
-  test_join_empty_left(NULL, testString2, '&');
-  test_join_empty_right(testString, NULL, '&');
+  test_join_empty_left(testString2, '&');
+  test_join_empty_right(testString, '&');
   test_join_empty_seperator(testString, testString2);
+  printf("Passed\n");
+
   // TODO
   printf("Testing toUpper...\n");
   // TODO
