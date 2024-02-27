@@ -1,5 +1,0 @@
-.git
-build/
-docker/
-*.md
-make*.sh

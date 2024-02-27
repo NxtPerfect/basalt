@@ -1,10 +1,4 @@
 version: '3'
 services:
-  debug:
-    build: ./docker/debug
-  ubuntu:
-    build: ./docker/ubuntu
-  windows:
-    build: ./docker/windows
-  linux-legacy:
-    build: ./docker/linux-legacy
+  basalt-debug:
+    build: debug.Dockerfile

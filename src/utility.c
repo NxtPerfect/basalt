@@ -16,8 +16,6 @@ int getSizeOfString(const char *str) {
 
 // Appends character to the end of string
 char *appendChar(const char *appendTo, const char c) {
-<<<<<<< HEAD
-=======
   if (appendTo == NULL) {
     char *res = NULL;
     res = malloc(2 * sizeof(char));
@@ -28,7 +26,6 @@ char *appendChar(const char *appendTo, const char c) {
     res[1] = '\0';
     return res;
   }
->>>>>>> features
   int len = getSizeOfString(appendTo);
   char *res = NULL;
   // If string is empty, return char
