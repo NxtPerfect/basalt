@@ -129,6 +129,30 @@ basalt/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/basalt.dir/build.make CMakeFiles/basalt.dir/build
 .PHONY : basalt/fast
 
+src/benchmark.o: src/benchmark.c.o
+.PHONY : src/benchmark.o
+
+# target to build an object file
+src/benchmark.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/basalt.dir/build.make CMakeFiles/basalt.dir/src/benchmark.c.o
+.PHONY : src/benchmark.c.o
+
+src/benchmark.i: src/benchmark.c.i
+.PHONY : src/benchmark.i
+
+# target to preprocess a source file
+src/benchmark.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/basalt.dir/build.make CMakeFiles/basalt.dir/src/benchmark.c.i
+.PHONY : src/benchmark.c.i
+
+src/benchmark.s: src/benchmark.c.s
+.PHONY : src/benchmark.s
+
+# target to generate assembly for a file
+src/benchmark.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/basalt.dir/build.make CMakeFiles/basalt.dir/src/benchmark.c.s
+.PHONY : src/benchmark.c.s
+
 src/main.o: src/main.c.o
 .PHONY : src/main.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... basalt"
+	@echo "... src/benchmark.o"
+	@echo "... src/benchmark.i"
+	@echo "... src/benchmark.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

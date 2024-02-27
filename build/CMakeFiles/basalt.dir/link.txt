@@ -1,1 +1,1 @@
-/usr/bin/cc CMakeFiles/basalt.dir/src/main.c.o CMakeFiles/basalt.dir/src/utility.c.o -o basalt 
+/usr/bin/cc -g CMakeFiles/basalt.dir/src/benchmark.c.o CMakeFiles/basalt.dir/src/main.c.o CMakeFiles/basalt.dir/src/utility.c.o -o basalt 
